@@ -1,0 +1,59 @@
+{% extends 'admin/adminhome.html' %}
+{% block content %}
+{% load static %}
+
+{% for u in usr%}
+
+<section class="h-100 gradient-custom-2" style="background-image:url({% static 'image/hoswall3.jpg' %});">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7" style="margin-top: 70px;">
+        <div class="card">
+          <div class="rounded-top text-white d-flex flex-row" style="background-color: rgba(221, 94, 172, 0.61); height:200px;">
+            <div class="ms-4 mt-5 d-flex flex-column" style="width: 200px; height:200px; margin-left: 18px;">
+              {% if u.doctor.image == '/static/image/defdoctor.jpg' %}
+              <img class="  img-fluid img-thumbnail mt-4 mb-2"
+              style="width: 200px; height:200px; z-index: 1"
+               src="{% static 'image/defdoctor.jpg' %}" 
+                alt="Bag image">
+              {% else %}
+              <img class="  img-fluid img-thumbnail mt-4 mb-2"
+              style="width: 200px; height:200px; z-index: 1"
+               src="{{ u.doctor.image.url }}" 
+                alt="Bag image">
+                {% endif %}
+            
+              <!-- <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                style="z-index: 1;">
+                Edit profile
+              </button> -->
+            </div>
+            <div class="ms-3" style="margin-top: 130px; margin-left: 10px;">
+              <h5>Dr.{{ u.doctor.user.first_name }}{{ u.doctor.user.last_name }}</h5>
+              <p>{{ u.doctor.phone }}</p>
+            </div>
+          </div>
+          <div class="p-4 text-black" style="background-color: #f8f9fa;">
+            <div class="d-flex justify-content-end text-center py-1">
+
+              DEPARTMENT : {{ u.department.department_name }}<br>
+              DESIGNATION : {{ u.designation }}
+            
+            </div>
+          </div>
+          <div class="card-body p-4 text-black">
+            <div class="mb-5">
+              <p class="lead fw-normal mb-1">About</p>
+              <div class="p-4" style="background-color: #f8f9fa;">
+                <p class="font-italic mb-1">Address : {{ u.doctor.address }}</p>
+                <p class="font-italic mb-1">Specilisation : {{ u.doctor.specilisation }}</p>
+                <p class="font-italic mb-0">Qualification : {{ u.doctor.qualification }}</p>
+                <p class="font-italic mb-0">UserName : {{ u.doctor.user.username }}</p>
+                <p class="font-italic mb-0">E-mail : {{ u.doctor.user.email }}</p>
+              </div>
+            </div>
+            </div></div></div></div></div></section>
+
+{% endfor %}
+
+{% endblock %}

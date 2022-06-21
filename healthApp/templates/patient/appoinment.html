@@ -1,0 +1,91 @@
+{% extends 'homepage.html' %}
+{% block content %}
+{% load static %}
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+  img {width:100%;}
+
+  </style>
+
+
+  <section class="testimonial py-5" style="background-image:url({% static 'image/hoswall3.jpg' %});">
+    <div class="container " style="width:900px; height:500px; margin-top: 80px;">
+        <div class="row ">
+            <div class="col-md-4 py-5  text-white text-center " style="background-color:rgba(221, 94, 172, 0.63) ;">
+                <div class=" ">
+                    <div class="card-body">
+                        <img src="{% static 'image/doctor2.jpg' %}" class="rounded-circle" style="width:100%">
+                        <h2 class="py-3">Get Appoinment</h2>
+                        <p>
+
+</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 py-5  " style="background-color: rgba(103, 94, 221, 0.63);">
+                <h4 class="pb-4">Please fill with your details</h4>
+                <form class="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <input type="text" name="fname" placeholder=" Name" class="form-control" >
+                        </div>
+                       
+                      
+                      <div class="form-group col-md-6">
+                        <input type="text" name="add" class="form-control " placeholder="address"  >
+                      </div>
+                      <div class="form-group col-md-6">
+                        <input type="number" name="age" class="form-control " placeholder="age"  >
+                      </div>
+
+                      <div class="form-group col-md-6">
+                      <label class="text-warning">Gender:</label>
+                      <input  type="radio" id="male" name="gender" value="male">
+                      <label class="text-warning" for="male">Male</label>
+                      <input  type="radio" id="female" name="gender" value="female">
+                      <label class="text-warning" for="female">Female</label>
+                      <input  type="radio" id="others" name="gender" value="others">
+                      <label class="text-warning" for="othersr">others</label>
+                      </div>
+                   
+                      <div class="form-group col-md-6">
+                        <input type="text" name="blood" class="form-control " placeholder="bloodgroup"  >
+                      </div>
+                 
+                   
+                      <div class="form-group col-md-6">
+                        <input  name="phn" placeholder="Mobile No." class="form-control"  type="text">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <input  name="email" placeholder="mailid" class="form-control"  type="email">
+                  </div>
+                    <div class="form-group col-md-6">
+                    <select name="department" class="form-control">
+                      <option value="none">Select</option>
+                      {% for d in dep %}
+                   <option value="{{ d.doctor.id }}">Dr.{{ d.doctor.user.first_name }}//{{ d.department.department_name}}</option>
+                      {% endfor %}
+                  </select></div>
+
+
+                    
+
+                    
+                      </div>
+                     
+                      <button type="submit" class="btn btn-success " style="margin-left: 40%;">confirm</button>
+                  
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

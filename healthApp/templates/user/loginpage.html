@@ -1,0 +1,50 @@
+{% extends 'homepage.html' %}
+{% block content %}
+{% load static %}
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Doctorlogin</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="">
+    <style>
+     </style>
+    <section class="testimonial py-5" style="background-image:url({% static 'image/hoswall2.jpg' %}); width:100%; ">
+      <div class="container " style="width:900px; height:500px; margin-top: 100px;">
+          <div class="row ">
+              <div class="col-md-4 py-5  text-white text-center " style="background-color: rgba(103, 94, 221, 0.63);">
+                  <div class=" ">
+                      <div class="card-body">
+                          <img src="{% static 'image/doctor2.jpg' %}" style="width:100%">
+                          <h2 class="py-3"> Doctor's Login</h2>
+                          
+  
+  </p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-8 py-5  " style="background-color: rgba(221, 94, 172, 0.63);">
+                  <h4 class="pb-4">Login here ..</h4>
+                  <form class="form" action="{% url 'user_login' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                      <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <input type="text" name="uname" placeholder="User Name" class="form-control" >
+                          </div>
+                          </div>
+                          <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <input type="password" name="password"  class="form-control" placeholder="password">
+                            </div>
+                            </div>
+                            <button type="submit" class="btn btn-success " style="margin-left: 40%;">login</button>
+                            </div></form></div></div></div></section>
+
+
+{% endblock %}

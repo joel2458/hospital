@@ -1,0 +1,44 @@
+{% extends 'admin/adminhome.html' %}
+{% block content %}
+{% load static %}
+
+<section class="testimonial py-5" style="background-image:url({% static 'image/hoswall3.jpg' %});">
+  <div class="container " style="width:900px; height:500px; margin-top: 80px;">
+      <div class="row ">
+          <div class="col-md-4 py-5  text-white text-center " style="background-color: rgba(102, 94, 221, 0.459);">
+              <div class=" ">
+                  <div class="card-body">
+                      <img src="{% static 'image/doctor2.jpg' %}" style="width:100%">
+                      <h2 class="py-3">Departments</h2>
+                      
+
+</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-8 py-5  " style="background-color: rgba(221, 94, 172, 0.438);">
+              <h4 class="pb-4">All Departments</h4>
+
+              {% for c in dep %}
+              <li class="list-group-item">
+                <a href="{% url 'detail' c.id %}">
+                    {{ c.department_name }}
+                  {% endfor %}
+          
+                </a>
+              </li>
+              </div></div></div></section>
+
+        <!-- {% for c in dep %}
+        <li class="list-group-item">
+          <a href="{% url 'detail' c.id %}">
+              {{ c.department_name }}
+
+    
+          </a>
+        </li> -->
+        </div>
+        </section>
+        {% endfor %} 
+
+        {% endblock %}

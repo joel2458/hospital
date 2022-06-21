@@ -1,0 +1,167 @@
+{% extends 'admin/adminhome.html' %}
+{% block content %}
+{% load static %}
+<!-- <style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgba(221, 94, 172, 0.664);
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: rgba(103, 94, 221, 0.63);
+  color: white;
+}
+</style>
+
+
+<div class="topnav">
+
+  
+    
+    <a class="active" href="/">Home</a>
+    
+    <a href="{% url 'load_add_department' %}">add department</a>
+  
+    <a href="{% url 'show_doctor' %}">show doctor</a>
+  
+    <a href="{% url 'show_dep' %}">Show Department</a>
+  
+   
+  
+      <a href="#contact">Contact</a>
+  
+      <a href="{% url 'logout' %}">logout</a>
+      </div> -->
+
+<style>
+    .card {
+
+  transition: 0.1s;
+  margin-top: 10px;
+  
+}
+
+.card:hover {
+  box-shadow: 0 10px 60px 0 rgba(231, 68, 196, 0.849);
+}
+    </style>
+
+    <section  class="testimonial py-5" style="background-image:url({% static 'image/hoswall3.jpg' %});">
+   
+ 
+<div class="row my-4">
+ 
+    
+        <!-- <ul class="list-group list-group-flush ">
+          <li class="list-group-item">
+              <a href="{% url 'show_doctor' %}">
+                  All
+              </a>
+            </li>
+
+
+              
+         {% for c in catgrs %}
+        <li class="list-group-item">
+          <a href="{% url 'show_doctor' %}?department={{ c.department_id }}">
+              {{ c.department_name }}
+          </a>
+        </li>
+        {% endfor %}  -->
+
+ 
+
+
+
+   
+
+         {% for u in user %}
+        <div class="col-md-3">
+
+            <div class="card">
+                {% if u.image == '/static/image/defdoctor.jpg' %}
+                <img class="ab images-sty"
+                 src="{% static 'image/defdoctor.jpg' %}" style="width: 100%;height:300px;"
+                  alt="Bag image">
+                {% else %}
+                <img class="ab images-sty"
+                 src="{{ u.image.url }}" style="width: 100%;height:300px;"
+                  alt="Bag image">
+                  {% endif %}
+                <div class="card-body">
+                  <p class="card-text">
+                      name:{{ u.user.first_name }}{{ u.user.last_name }}<br>
+                     Specilisation : {{ u.specilisation }}<br>
+                      Qualification : {{ u.qualification }}
+                      
+
+                 
+                      
+                  </p>
+                
+                  <p class="card-text">
+                    
+                </p>
+                </div>
+
+                
+                <a href="{% url 'add_doctor_details' u.id %}" class="btn btn-outline-dark btn-sm m-1" role="button">add dep/ designation</a>
+                <a href="{% url 'showdoc' u.id  %}" class="btn btn-outline-dark btn-sm m-1" role="button">detail</a>
+                <a href="{% url 'delete_doctor' u.id %}" class="btn btn-outline-danger btn-sm m-1" role="button">remove Doctor</a>
+                
+              </div>
+              </div>
+        {% empty %}
+        <h3>No photos</h3>
+        {% endfor %}
+
+
+
+      
+
+        {% for u in depp %}
+
+        {% if u.doctor.image == '/static/image/defdoctor.jpg' %}
+          <img class="  img-fluid img-thumbnail mt-4 mb-2"
+          style="width: 200px; height:200px; z-index: 1"
+           src="{% static 'image/defdoctor.jpg' %}" 
+            alt="Bag image">
+          {% else %}
+          <img class="  img-fluid img-thumbnail mt-4 mb-2"
+          style="width: 200px; height:200px; z-index: 1"
+           src="{{ u.doctor.image.url }}" 
+            alt="Bag image">
+            {% endif %}
+            {% endfor %} 
+
+
+
+
+
+
+
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
